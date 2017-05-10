@@ -15,7 +15,9 @@
 
 
 # static fields
-.field private static final ATT_KEYGUARD:Ljava/lang/String; = "keyguard"
+.field private mFlymeConfigCloud:Lcom/android/server/notification/ConfigCloud;
+
+.field private mFlymeRankingController:Lcom/flyme/server/notfication/RankingController;
 
 .field private static final ATT_NAME:Ljava/lang/String; = "name"
 
@@ -1669,7 +1671,7 @@
     :cond_7
     const/16 v15, -0x3e8
 
-    if-eq v14, v15, :cond_8
+    if-eq v14, v15, :cond_flyme_0
 
     iput v14, v8, Lcom/android/server/notification/RankingHelper$Record;->visibility:I
 
@@ -2390,40 +2392,8 @@
     invoke-interface {p1, v8, v3, v4}, Lorg/xmlpull/v1/XmlSerializer;->attribute(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
 
     :cond_3
-    iget v3, v2, Lcom/android/server/notification/RankingHelper$Record;->keyguard:I
 
-    if-eq v3, v9, :cond_4
-
-    const-string v3, "keyguard"
-
-    iget v4, v2, Lcom/android/server/notification/RankingHelper$Record;->keyguard:I
-
-    invoke-static {v4}, Ljava/lang/Integer;->toBinaryString(I)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-interface {p1, v8, v3, v4}, Lorg/xmlpull/v1/XmlSerializer;->attribute(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
-
-    .line 246
-    :cond_4
-    iget-wide v4, v2, Lcom/android/server/notification/RankingHelper$Record;->notificationSoundTimeout:J
-
-    const-wide/16 v6, 0x0
-
-    cmp-long v3, v4, v6
-
-    if-eqz v3, :cond_5
-
-    .line 247
-    const-string/jumbo v3, "sound-timeout"
-
-    iget-wide v4, v2, Lcom/android/server/notification/RankingHelper$Record;->notificationSoundTimeout:J
-
-    invoke-static {v4, v5}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-interface {p1, v8, v3, v4}, Lorg/xmlpull/v1/XmlSerializer;->attribute(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;
+    invoke-direct {p0, p1, v2}, Lcom/android/server/notification/RankingHelper;->writeFlymeExtraFields(Lorg/xmlpull/v1/XmlSerializer;Lcom/android/server/notification/RankingHelper$Record;)V
 
     :cond_5
     if-nez p2, :cond_6
