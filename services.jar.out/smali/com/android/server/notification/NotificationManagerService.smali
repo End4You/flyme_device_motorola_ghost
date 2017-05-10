@@ -1911,7 +1911,9 @@
 
     iget v4, v0, Landroid/app/Notification;->defaults:I
 
-    and-int/lit8 v4, v4, 0x1
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService;->notifyFlymeWakeupScreen(Lcom/android/server/notification/NotificationRecord;)V
+
+    move-object/from16 v0, p0
 
     if-nez v4, :cond_1d
 
