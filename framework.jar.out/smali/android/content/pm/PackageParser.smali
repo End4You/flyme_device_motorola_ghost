@@ -6256,7 +6256,13 @@
 
     return-object v2
 
+    :cond_flyme_0
+    invoke-static {v14}, Landroid/content/pm/PackageParser$FlymeInjector;->parseAccessMetaFromResource(Landroid/content/pm/PackageParser$Activity;)V
+
+    goto/16 :goto_flyme_0
+
     :cond_2d
+
     const-string v2, "PackageParser"
 
     new-instance v3, Ljava/lang/StringBuilder;
