@@ -1571,11 +1571,7 @@
 
     iput v0, p0, Landroid/view/WindowManager$LayoutParams;->needsMenuKey:I
 
-    invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
-
-    move-result v0
-
-    iput v0, p0, Landroid/view/WindowManager$LayoutParams;->blurMaskAlphaThreshold:F
+    invoke-static/range {p0 .. p1}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->readFromParcel(Landroid/view/WindowManager$LayoutParams;Landroid/os/Parcel;)V
 
     return-void
 
@@ -2304,26 +2300,13 @@
     or-int/2addr v0, v2
 
     :cond_23
-    iget v2, p0, Landroid/view/WindowManager$LayoutParams;->blurMaskAlphaThreshold:F
 
-    iget v3, p1, Landroid/view/WindowManager$LayoutParams;->blurMaskAlphaThreshold:F
+    invoke-static {p0, p1, v0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->copyFrom(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager$LayoutParams;I)I
 
-    cmpl-float v2, v2, v3
+    move-result v0
 
-    if-eqz v2, :cond_24
-
-    .line 2019
-    iget v2, p1, Landroid/view/WindowManager$LayoutParams;->blurMaskAlphaThreshold:F
-
-    iput v2, p0, Landroid/view/WindowManager$LayoutParams;->blurMaskAlphaThreshold:F
-
-    .line 2020
-    const/high16 v2, 0x40000000    # 2.0f
-
-    or-int/2addr v0, v2
-
-    .line 2023
     :cond_24
+
     return v0
 .end method
 
@@ -3455,9 +3438,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    iget v0, p0, Landroid/view/WindowManager$LayoutParams;->blurMaskAlphaThreshold:F
-
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeFloat(F)V
+    invoke-static/range {p0 .. p1}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->writeToParcel(Landroid/view/WindowManager$LayoutParams;Landroid/os/Parcel;)V
 
     return-void
 
