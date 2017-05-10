@@ -40,21 +40,21 @@ vendor_modify_images := boot
 # The default value is app or pri-app which not need to configure.
 # You can configure the directory name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_dirs := vendor/operator/app
+vendor_remove_dirs := addon.d
 
 ##############################################################################
 # The value decides the file which you want to remove in the vendor directory for the ota package.
 # The default value is nothing.
 # You can configure the file name which relative to the vendor/system directory.
 #-----------------------------------------------------------------------------
-#vendor_remove_files := bin/zchgd
+vendor_remove_files := etc/init.d/00banner etc/permissions/com.cyanogenmod.android.xml etc/permissions/com.cyanogenmod.nfc.enhanced.xml etc/permissions/org.cyanogenmod.appsuggest.xml etc/permissions/org.cyanogenmod.audio.xml etc/permissions/org.cyanogenmod.hardware.xml etc/permissions/org.cyanogenmod.livedisplay.xml etc/permissions/org.cyanogenmod.livelockscreen.xml etc/permissions/org.cyanogenmod.partner.xml etc/permissions/org.cyanogenmod.performance.xml etc/permissions/org.cyanogenmod.platform.xml etc/permissions/org.cyanogenmod.profiles.xml etc/permissions/org.cyanogenmod.statusbar.xml etc/permissions/org.cyanogenmod.telephony.xml etc/permissions/org.cyanogenmod.theme.xml etc/permissions/org.cyanogenmod.weather.xml etc/CHANGELOG-CM.txt framework/org.cyanogenmod.hardware.jar framework/org.cyanogenmod.platform-res.apk framework/org.cyanogenmod.platform.jar
 
 ##############################################################################
 # The value decides the vendor apk which you want to save in the vendor directory for the ota package.
 # The default value is Bluetooth.
 # You can configure the apk name in the vendor/system/app or vendor/system/priv-app directory.
 #-----------------------------------------------------------------------------
-vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService HTMLViewer KeyChain Nfc PicoTts PrintSpooler Stk UserDictionaryProvider BackupRestoreConfirmation DefaultContainerService ExternalStorageProvider FusedLocation InputDevices ProxyHandler SharedStorageBackup Shell
+vendor_saved_apps := Bluetooth BluetoothExt BluetoothMidiService CaptivePortalLogin CertInstaller Development Exchange2 HTMLViewer KeyChain Nfc PacProcessor PicoTts PrintSpooler Provision Stk telresoruces TimeService WAPPushManager webview UserDictionaryProvider BackupRestoreConfirmation CalendarProvider CallLogBackup CarrierConfig CellBroadcastReceiver ContactsProvider DataUsageProvider  DefaultContainerService DownloadProvider ExternalStorageProvider FusedLocation InputDevices ProxyHandler MediaProvider MmsService MotoDoze SettingsProvider SharedStorageBackup Shell StatementService Tag Telecom TelephonyProvider TeleService VpnDialogs
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.
@@ -128,7 +128,12 @@ vendor_modify_jars := framework services telephony-common wifi-service
 # If 1, hide the soft mainkeys. If 0, display the soft mainkeys.
 # You should configure the property according to your device.
 override_property += \
-    qemu.hw.mainkeys=0
+    qemu.hw.mainkeys=0 \
+    ro.build.display.id=flyme_ghost-userdebug 6.0.1 MOB31T 591918074e \
+    ro.build.user=h4ndshake \
+    ro.build.host=GitHub \
+    ro.build.flavor=flyme_ghost-userdebug \
+    ro.product.name=flyme_ghost
 
 
 # The value of the property ro.flyme.romer will be contained in the ota package name.
@@ -146,8 +151,13 @@ override_property += \
 # The default value is nothing.
 # You can add the property name in the value from the build.prop.
 #-----------------------------------------------------------------------------
-# remove_property += \
-#     dev.defaultwallpaper
+remove_property += \
+    ro.cm.device \
+    ro.cm.build.version.plat.sdk \
+    ro.cm.build.version.plat.rev \
+    ro.cm.version \
+    ro.cmlegal.url \
+    ro.cm.display.version
 
 ##############################################################################
 # Defines whether uses assertions in /META-INF/com/google/android/updater-script of the OTA package.
