@@ -119,18 +119,6 @@ on boot
     chown system system /dev/cpuctl/cpu.notify_on_migrate
     chmod 0664 /dev/cpuctl/cpu.notify_on_migrate
 
-    # LiveDisplay sysfs
-    chown system system /sys/devices/virtual/graphics/fb0/aco
-    chmod 0660 /sys/devices/virtual/graphics/fb0/aco
-    chown system system /sys/devices/virtual/graphics/fb0/cabc
-    chmod 0660 /sys/devices/virtual/graphics/fb0/cabc
-    chown system system /sys/devices/virtual/graphics/fb0/rgb
-    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
-    chown system system /sys/devices/virtual/graphics/fb0/sre
-    chmod 0660 /sys/devices/virtual/graphics/fb0/sre
-    chown system system /sys/devices/virtual/graphics/fb0/color_enhance
-    chmod 0660 /sys/devices/virtual/graphics/fb0/color_enhance
-
     # Vibrator intensity control
     chown system system /sys/class/timed_output/vibrator/vtg_level
     chmod 0644 /sys/class/timed_output/vibrator/vtg_level
@@ -208,20 +196,3 @@ on property:sys.io.scheduler=bfq
     write /sys/block/sda/queue/iosched/slice_idle 0
     write /sys/block/sde/queue/iosched/slice_idle 0
     write /sys/block/dm-0/queue/iosched/slice_idle 0
-
-# su daemon
-service su_daemon /system/xbin/su --daemon
-    disabled
-    seclabel u:r:sudaemon:s0
-
-on property:persist.sys.root_access=0
-    stop su_daemon
-
-on property:persist.sys.root_access=1
-    start su_daemon
-
-on property:persist.sys.root_access=2
-    stop su_daemon
-
-on property:persist.sys.root_access=3
-    start su_daemon
