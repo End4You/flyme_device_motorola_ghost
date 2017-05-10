@@ -469,7 +469,11 @@
     .prologue
     const/4 v0, 0x1
 
-    invoke-virtual {p0, v0}, Landroid/app/WallpaperManager;->clear(Z)V
+    invoke-static {v0}, Landroid/app/WallpaperManager$FlymeInjector;->openFlymeDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Landroid/app/WallpaperManager;->setStream(Ljava/io/InputStream;)V
 
     return-void
 .end method
