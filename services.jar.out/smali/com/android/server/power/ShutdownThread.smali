@@ -7,7 +7,9 @@
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Lcom/android/server/power/ShutdownThread$CloseDialogReceiver;,
-        Lcom/android/server/power/ShutdownThread$1;
+        Lcom/android/server/power/ShutdownThread$1;,
+        Lcom/android/server/power/ShutdownThread$FlymeInjector;,
+        Lcom/android/server/power/ShutdownThread$CloseDialogReceiver;
     }
 .end annotation
 
@@ -486,6 +488,8 @@
     sput-object v3, Lcom/android/server/power/ShutdownThread;->mAudioManager:Landroid/media/AudioManager;
 
     sget-object v3, Lcom/android/server/power/ShutdownThread;->mAudioManager:Landroid/media/AudioManager;
+
+    invoke-static {p0}, Lcom/android/server/power/ShutdownThread$FlymeInjector;->showShutDownAnimation(Landroid/content/Context;)V
 
     const/4 v4, 0x3
 
