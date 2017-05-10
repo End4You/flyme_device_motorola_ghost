@@ -441,7 +441,7 @@
 
     iget v10, p0, Landroid/widget/Toast$TN;->mHorizontalMargin:F
 
-    iput v10, v9, Landroid/view/WindowManager$LayoutParams;->horizontalMargin:F
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Toast$TN;->hookFlymeToastType()V
 
     iget-object v9, p0, Landroid/widget/Toast$TN;->mParams:Landroid/view/WindowManager$LayoutParams;
 
