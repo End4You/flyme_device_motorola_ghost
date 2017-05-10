@@ -2674,32 +2674,9 @@
 
     sub-int v2, v3, v4
 
-    if-eqz v2, :cond_15
-
-    return v2
-
-    :cond_15
-    iget-object v3, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    if-nez v3, :cond_16
-
-    iget-object v3, p1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    if-eqz v3, :cond_17
-
-    return v5
-
-    :cond_16
-    iget-object v3, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    iget-object v4, p1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    invoke-virtual {v3, v4}, Landroid/content/res/ThemeConfig;->compareTo(Landroid/content/res/ThemeConfig;)I
+    invoke-static {p0, p1, v2}, Landroid/content/res/Configuration$FlymeInjector;->compareTo(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
 
     move-result v2
-
-    .line 1355
-    :cond_17
     return v2
 .end method
 
@@ -3034,26 +3011,11 @@
     or-int/lit16 v0, v0, 0x1000
 
     :cond_11
-    iget-object v3, p1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
 
-    if-eqz v3, :cond_12
+    invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->diff(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
 
-    iget-object v3, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
+    move-result v0
 
-    if-eqz v3, :cond_14
-
-    iget-object v3, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    iget-object v4, p1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    invoke-virtual {v3, v4}, Landroid/content/res/ThemeConfig;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_14
-
-    :cond_12
-    :goto_1
     return v0
 
     .end local v1    # "deltaScreenLayoutDir":I
@@ -3647,19 +3609,7 @@
 
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
-    const-class v0, Landroid/content/res/ThemeConfig;
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;
-
-    move-result-object v0
-
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/content/res/ThemeConfig;
-
-    iput-object v0, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->readFromParcel(Landroid/content/res/Configuration;Landroid/os/Parcel;)V
 
     return-void
 
@@ -3825,22 +3775,8 @@
 
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
-    iget-object v0, p1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->initFlymeExtraFields(Landroid/content/res/Configuration;Landroid/content/res/Configuration;)V
 
-    if-eqz v0, :cond_1
-
-    iget-object v0, p1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    invoke-virtual {v0}, Landroid/content/res/ThemeConfig;->clone()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/content/res/ThemeConfig;
-
-    iput-object v0, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    .line 697
-    :cond_1
     return-void
 .end method
 
@@ -3898,7 +3834,7 @@
 
     iput v1, p0, Landroid/content/res/Configuration;->seq:I
 
-    iput-object v2, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
+    invoke-static/range {p0 .. p0}, Landroid/content/res/Configuration$FlymeInjector;->initFlymeExtraFields(Landroid/content/res/Configuration;)V
 
     return-void
 .end method
@@ -5327,23 +5263,10 @@
     iput v3, p0, Landroid/content/res/Configuration;->seq:I
 
     :cond_18
-    iget-object v3, p1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
 
-    if-eqz v3, :cond_19
+    invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->updateFrom(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
 
-    iget-object v3, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    if-eqz v3, :cond_1d
-
-    iget-object v3, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    iget-object v4, p1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    invoke-virtual {v3, v4}, Landroid/content/res/ThemeConfig;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_1d
+    move-result v0
 
     :cond_19
     :goto_2
@@ -5550,9 +5473,7 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    iget-object v0, p0, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
-
-    invoke-virtual {p1, v0, p2}, Landroid/os/Parcel;->writeParcelable(Landroid/os/Parcelable;I)V
+    invoke-static/range {p0 .. p2}, Landroid/content/res/Configuration$FlymeInjector;->writeToParcel(Landroid/content/res/Configuration;Landroid/os/Parcel;I)V
 
     return-void
 
